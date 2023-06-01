@@ -10,7 +10,7 @@
 - The project uses Hilt for dependency injection.
 - Coroutines are used for background operations.
 - The project uses StateFlow to handle the UI state.
-- 
+
 ## Setup:
 
 To get the project up and running on your local machine, do the following:

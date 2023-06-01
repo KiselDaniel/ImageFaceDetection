@@ -69,27 +69,22 @@ dependencies {
     implementation 'com.google.ar:core:1.30.0'
 
     // Hilt
-    dependencies {
-        implementation "com.google.dagger:hilt-android:2.46.1"
-        kapt "com.google.dagger:hilt-compiler:2.46.1"
-        annotationProcessor 'com.google.dagger:hilt-compiler:2.46.1'
-        implementation 'androidx.hilt:hilt-navigation-compose:1.0.0'
+    implementation "com.google.dagger:hilt-android:2.46.1"
+    kapt "com.google.dagger:hilt-compiler:2.46.1"
+    annotationProcessor 'com.google.dagger:hilt-compiler:2.46.1'
+    implementation 'androidx.hilt:hilt-navigation-compose:1.0.0'
 
 
-        // For instrumentation tests
-        androidTestImplementation  'com.google.dagger:hilt-android-testing:2.46.1'
-        androidTestAnnotationProcessor 'com.google.dagger:hilt-compiler:2.46.1'
+    // For instrumentation tests
+    androidTestImplementation  'com.google.dagger:hilt-android-testing:2.46.1'
+    androidTestAnnotationProcessor 'com.google.dagger:hilt-compiler:2.46.1'
 
-        // For local unit tests
-        testImplementation 'com.google.dagger:hilt-android-testing:2.46.1'
-        testAnnotationProcessor 'com.google.dagger:hilt-compiler:2.46.1'
+    // For local unit tests
+    testImplementation 'com.google.dagger:hilt-android-testing:2.46.1'
+    testAnnotationProcessor 'com.google.dagger:hilt-compiler:2.46.1'
 
 
-        androidTestImplementation 'org.robolectric:robolectric:4.7.3'
-    }
-
-//    // ViewModel Compose
-//    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1
+    androidTestImplementation 'org.robolectric:robolectric:4.7.3'
 
     // Coil
     implementation 'io.coil-kt:coil-compose:2.4.0'

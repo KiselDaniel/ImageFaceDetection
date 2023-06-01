@@ -3,8 +3,6 @@ package com.example.imagefacedetection
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.net.Uri
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
@@ -67,7 +65,7 @@ fun HomeScreen(
 
             // Set the picked image in the view model as Bitmap
             scope.launch(Dispatchers.IO) {
-            val bitmap = getBitmapFromUri(context = context, uri = uiState.pickedImageUri)
+            val bitmap = viewModel.getBitmapFromUri(context = context, uri = uiState.pickedImageUri)
 
                 withContext(Dispatchers.Main) {
                     viewModel.setPickedImage(bitmap)
@@ -208,20 +206,6 @@ fun GradientButtonPreview() {
             onClick = { /*TODO*/ }
         )
     }
-}
-
-fun getBitmapFromUri(uri: Uri?, context: Context): Bitmap? {
-    uri?.let {
-        val contentResolver = context.contentResolver
-        return try {
-            val inputStream = contentResolver.openInputStream(it)
-            BitmapFactory.decodeStream(inputStream)
-        } catch (e: Exception) {
-            e.printStackTrace()
-            null
-        }
-    }
-    return null
 }
 
 fun showSnackbar(

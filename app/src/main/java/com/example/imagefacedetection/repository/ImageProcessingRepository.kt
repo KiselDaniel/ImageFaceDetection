@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.ContentValues
 import android.content.Context
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.net.Uri
@@ -65,6 +66,20 @@ class ImageProcessingRepository @Inject constructor (
         canvas.drawRect(left.toFloat(), top.toFloat(), right.toFloat(), bottom.toFloat(), paint)
 
         return mutableBitmap
+    }
+
+    override fun getBitmapFromUri(uri: Uri?, context: Context): Bitmap? {
+        uri?.let {
+            val contentResolver = context.contentResolver
+            return try {
+                val inputStream = contentResolver.openInputStream(it)
+                BitmapFactory.decodeStream(inputStream)
+            } catch (e: Exception) {
+                e.printStackTrace()
+                null
+            }
+        }
+        return null
     }
 
     override fun saveBitmapToStorage(

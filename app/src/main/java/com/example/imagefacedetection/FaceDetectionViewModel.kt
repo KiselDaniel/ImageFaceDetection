@@ -49,9 +49,6 @@ class FaceDetectionViewModel @Inject constructor(
         }
     }
 
-    /**
-     * Set the [pickedImageUri] for the face recognition screen's state.
-     */
     fun onPicturePicked(uri: Uri?) {
         _uiState.update { currentState ->
             currentState.copy(pickedImageUri = uri)
@@ -134,8 +131,20 @@ class FaceDetectionViewModel @Inject constructor(
         }
     }
 
+    /**
+     * Paint the bounding box to the [bitmap] on specified [coordinates].
+     */
     fun paintBoundingBoxToBitmap(bitmap: Bitmap, coordinates: Rectangle<Double>): Bitmap? {
         return imageProcessingRepository.get().paintBoundingBoxToBitmap(bitmap, coordinates)
+    }
+
+    fun getBitmapFromUri(uri: Uri?, context: Context): Bitmap? {
+        return try {
+            imageProcessingRepository.get().getBitmapFromUri(uri, context)
+        } catch (e: Exception) {
+            createErrorMessage(e.message ?: "Unknown error")
+            null
+        }
     }
 
     fun saveBitmapToStorage(
